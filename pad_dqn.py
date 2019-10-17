@@ -236,7 +236,7 @@ if __name__ == "__main__":
     rms = RMSprop()
     network.compile(loss='mse', optimizer=rms)
     
-    epochs = 1000000 #number of games run
+    epochs = 1000000 #number of games run 1000000 takes a few hours
     gamma = 0.9 #discount factor for DQN
     epsilon = 1 #exploration rate for epsilon-greedy, linearly decreases to 0.1 over epochs
     batch_size = 100 #batch size for experience replay
@@ -285,7 +285,7 @@ if __name__ == "__main__":
                     #sets reward if game is in terminal state
                     y_target[0][experience[1]] = experience[2]
                 else:
-                    #uses bellman equation to value potential rewards
+                    #uses Bellman equation to value potential rewards
                     y_target[0][experience[1]] = experience[2] + gamma * np.max(network.predict(experience[3][np.newaxis,...]))
                 x_batch.append(experience[0])
                 y_batch.append(y_target[0])
@@ -335,7 +335,7 @@ if __name__ == "__main__":
 
     board.draw_board(background_sprites, orb_sprites)
     cursor = (0, 0)
-    #x and y coords of actions are swapped because of pygame coordinate conventions
+    #x and y coords of actions are swapped because of pygame coordinate format
     possible_actions = [(0, -1), (0, 1), (-1, 0), (1, 0)]
     #draws a line `through actions
     for action in action_list:
