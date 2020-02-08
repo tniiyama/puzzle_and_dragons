@@ -29,13 +29,14 @@ The state representation of the game board is a one-hot encoding of 7 5x6 boards
 Experimental training was done over 500,000 game frames, with the experience replay buffer being 100,000 frames large, and the target network updating every 10,000 frames. Experience replay was done with minibatches of 64 experiences. Observed reward at each state is measured by the number of combos created by the current board state. Epsilon was determined by the equation 0.1+0.9e<sup>-x/25,000</sup>, where x is the current frame number. 
 
 All experiments were performed on the initial board state shown below. The initial cursor position was always set in the top-left corner. 
+
 <img src="https://imgur.com/ygAyuBG.png">
 
 The results of the DQN, random, and human performance are shown below. The DQN achieved a maximum of 3 combos, which is better than choosing actions randomly, which failed to achieve any combos. However, the DQN still performed considerably worse than a human player (me), which achieved 8 combos on the given board. 
 
 <img src="https://imgur.com/LsPyEG0.png" width="256"> <img src="https://imgur.com/cZRXRvN.png" width="256"> <img src="https://imgur.com/08aFvLk.png" width="256">
 
-<t>DQN		Random		Human
+DQN Random Human
 
 Measuring the performance of the model during training can be hard because since epsilon is never less than 0.1, the game agent almost never performs optimally according to its policy during training. Shown below is the graph of the reward at the end of each game during the training data. Since the game engine is programmed to automatically stop after 20 or more moves are made, the 500,000 frames resulted in about 33,000 completed games. The reward function mapped is the number of combos * 10 – moves / 5 (e.g. Making 4 combos in 13 moves gives a reward of 37.4). Acting randomly at the beginning of training when epsilon is high occasionally gives very good results, but the network seems to converge to a sub-optimal policy as training progresses. 
  
@@ -47,16 +48,22 @@ DQN has been proven as a powerful tool that’s been shown to learn how to play 
 
 pad_game.py is a simulation of the Puzzle and Dragons game engine using Pygame. The cursor location can be set using the mouse, arrow keys move the selected orb around the board, spacebar calculates the combos created, press R to reset the board. 
 
-pad_dqn.py uses the DQN to maximize the number of combos made. 
+pad_dqn.py uses the DQN to maximize the number of combos made. After training, a Pygame display of the board and "optimal" route is displayed. 
 
 orbs.png and background.png are sprite files
 
 ## References
 
 https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf
+
 https://greentec.github.io/reinforcement-learning-third-en/#weight-initialization
+
 https://towardsdatascience.com/introduction-to-various-reinforcement-learning-algorithms-i-q-learning-sarsa-dqn-ddpg-72a5e0cb6287
+
 https://www.freecodecamp.org/news/improvements-in-deep-q-learning-dueling-double-dqn-prioritized-experience-replay-and-fixed-58b130cc5682/
+
 http://outlace.com/rlpart3.html
+
 http://cs231n.github.io/neural-networks-3/
+
 http://neuralnetworksanddeeplearning.com/
