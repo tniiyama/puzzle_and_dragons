@@ -2,7 +2,7 @@
 
 Puzzle and Dragons is a popular Japanese mobile game. The player chooses an orb to move around the game board, available actions being moving the orb up, down, left, or right. When the player releases the orb or runs out of moves, all matches of three or more connected orbs of the same type are erased, and counted as a “combo”. Generally, the goal of the game is to make as many combos as possible, so this project aims to maximize the number of combos achieved given a set number of moves. 
 
-![description](https://imgur.com/a/qMuZl5L)
+![description](https://i.imgur.com/2ld1eOE.png)
 
 The highlighted red orb is moved along the black path to its final position in the second picture. All rows or columns with three or more connected orbs are erased, and the third picture is the final board state after one “game”. This game achieved 4 combos (highlighted in red): the row of 4 green orbs at the top, the row of 3 yellows right below it, the row of 3 greens near the bottom, and the column of 3 reds created once the 3 greens are erased. 
 
